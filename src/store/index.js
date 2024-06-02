@@ -4,6 +4,21 @@ const initialState={
     counter:0,
     showCounter:true
 }
+const authInitialState={
+    login: false,
+}
+createSlice({
+  name: 'auth',
+  initialState: authInitialState,
+  reducers:{
+    login(state){
+        state.authenticated = true
+    },
+    logout(state){
+        state.authenticated = false 
+    }
+  }  
+})
 
 const theCounterSlice= createSlice({
     name: 'counter',
@@ -27,7 +42,7 @@ const theCounterSlice= createSlice({
 })
 
 const store =configureStore({
-    reducer: theCounterSlice.reducer
+    reducer:{ theCounterSlice.reducer}
 })
 
 export const counterActions =theCounterSlice.actions
